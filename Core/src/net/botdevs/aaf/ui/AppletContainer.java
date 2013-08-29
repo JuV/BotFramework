@@ -7,6 +7,6 @@ import javax.swing.*;
  * Date: 25.8.2013
  * Time: 14:57
  */
-public interface AppletContainer {
+interface AppletContainer {
     public JPanel getContainer();
 }

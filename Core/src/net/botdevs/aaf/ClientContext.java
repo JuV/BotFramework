@@ -17,21 +17,21 @@ public final class ClientContext {
 
     ClientContext(final ApplicationContext context) {
         this._context = context;
-        this._appletProvider = context.requestService(AppletProvider.class);
+        this._appletProvider = context.getExtensionManager().requestService(AppletProvider.class);
 
         initialize();
     }
 
     private void initialize() {
         applet = _appletProvider.provide();
-        if (_context.hasService(ClientUI.class)) {
-            ClientUI ui = _context.requestService(ClientUI.class);
+        if (_context.getExtensionManager().hasService(ClientUI.class)) {
+            ClientUI ui = _context.getExtensionManager().requestService(ClientUI.class);
             ui.getContainer().add(applet);
             ui.display();
         }
     }
 
-    public Applet getApplet() {
+    public final Applet getApplet() {
         return applet;
     }
 }
